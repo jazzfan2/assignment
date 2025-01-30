@@ -4,7 +4,7 @@
 # Datum: 26-01-2025
 # Toelichting: Implementation in Python3 of algorithm and pseudocode on:
 # https://users.cs.duke.edu/~brd/Teaching/Bio/asmb/current/Handouts/munkres.html
-# (zie ook https://en.wikipedia.org/wiki/Hungarian_algorithm)
+# (see also https://en.wikipedia.org/wiki/Hungarian_algorithm)
 # Efficient in finding optimum sum and assignment, also if more than one with same sum exist.
 #
 # Matrix is a flat textfile with space-separated integers arranged in a square matrix pattern.
