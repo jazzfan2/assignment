@@ -22,7 +22,7 @@ n = int(sys.argv[2])      # Number of rows and columns used, starting with index
 a = 0
 if len(sys.argv) > 3:
     a = int(sys.argv[3])  # Find minimum cost assignment: a = 0 or omit argument
-                          # Find maximum cost assignment: a = anything else
+                          # Find maximum cost assignment: a = any other integer
 
 undefined = -1000000      # Meaning: matrix- or list-index is yet undefined
 
