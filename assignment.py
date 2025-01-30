@@ -365,6 +365,6 @@ print("\n===> DONE <===\n")
 
 
 # Print the matrix and count the original numbers on the positions of the assigned zeroes,
-# resulting in maximum sum:
+# resulting in minimum (or maximum, if specified) sum:
 printmatrix(matrix)
 print("\n", summatrix(matrix))
