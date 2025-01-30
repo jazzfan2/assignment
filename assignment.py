@@ -65,8 +65,7 @@ def summatrix(matrix):
     return(total)
 
 
-# Print the cover-pattern through the zeroes:
-# Opm: voeg hier voor de duidelijkheid gegevens toe uit de C- en/of M-matrices !!
+# Print the cover-pattern ('strikes') through the zeroes:
 def printstrikes(R_cov, C_cov):
     for i in range(n):
         print(" ", end = '')
