@@ -9,8 +9,12 @@
 # also if more than one configuration with same optimum sum exist.
 #
 # The matrix is a flat text file with space-separated integers arranged in a square matrix pattern.
-# (ANSI color codes can be suppressed from the text stream output of this program,
-# by filtering this via a pipe through the function "nocolor" in ~scripts/functions.sh)
+# ANSI color codes can be suppressed from the text stream output of this program,
+# by filtering this via a pipe through the function "nocolor" in ~scripts/functions.sh
+#
+# Example command to analyze first 40 rows and columns of a square random 58x58 matrix
+# to result in a maximum cost assignment, without color indication:
+# assignment.py <(matrix.py 58) 40 1 | nocolor
 #
 ############################################################################################
 #
