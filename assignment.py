@@ -1,15 +1,16 @@
 #!/usr/bin/env python3
-# Naam: assignment.py
-# Auteur: Rob Toscani
-# Datum: 26-01-2025
-# Toelichting: Implementation in Python3 of algorithm and pseudocode on:
+# Name:   assignment.py
+# Author: Rob Toscani
+# Date:   26-01-2025
+# Description: Implementation in Python3 of algorithm and pseudocode on:
 # https://users.cs.duke.edu/~brd/Teaching/Bio/asmb/current/Handouts/munkres.html
 # (see also https://en.wikipedia.org/wiki/Hungarian_algorithm)
-# Efficient in finding optimum sum and assignment, also if more than one with same sum exist.
+# Efficient in finding optimum (max. or min.) (sum-)cost assignment in a square cost matrix,
+# also if more than one configuration with same optimum sum exist.
 #
-# Matrix is a flat textfile with space-separated integers arranged in a square matrix pattern.
-# (ANSI color codes can be suppressed from the output text stream by filtering this via a pipe
-# through the function "nocolor" in ~scripts/functions.sh)
+# The matrix is a flat text file with space-separated integers arranged in a square matrix pattern.
+# (ANSI color codes can be suppressed from the text stream output of this program,
+# by filtering this via a pipe through the function "nocolor" in ~scripts/functions.sh)
 #
 ############################################################################################
 #
