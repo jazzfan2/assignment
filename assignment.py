@@ -10,7 +10,7 @@
 #
 # The matrix is a flat text file with space-separated integers arranged in a square matrix pattern.
 # ANSI color codes can be suppressed from the text stream output of this program,
-# by filtering this via a pipe by the function "nocolor" in ~scripts/functions.sh
+# by filtering this via a pipe by the function "nocolor" in ~/scripts/functions.sh
 #
 # Example command to analyze first 40 rows and columns of a square random 58x58 matrix
 # to result in a maximum cost assignment, without color indication:
