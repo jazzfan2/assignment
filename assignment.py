@@ -42,7 +42,7 @@ def printmatrix(matrix):
             elif C[i][j] == 0 and M[i][j] == 2:
                 print("\x1b[1;91m%4d\x1b[0m" % matrix[i][j], end = '') # Primed zeroes red:
             elif matrix[i][j] == 0:
-                print("\x1b[1;93m%4d\x1b[0m" % matrix[i][j], end = '') # Zeroes (elsewhere) yellow:
+                print("\x1b[1;93m%4d\x1b[0m" % matrix[i][j], end = '') # Other zeroes yellow:
             else:
                 print("%4d" % matrix[i][j], end = '')
         print()
