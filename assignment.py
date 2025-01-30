@@ -5,6 +5,7 @@
 # Description: Implementation in Python3 of algorithm and pseudocode on:
 # https://users.cs.duke.edu/~brd/Teaching/Bio/asmb/current/Handouts/munkres.html
 # (see also https://en.wikipedia.org/wiki/Hungarian_algorithm)
+#
 # Efficient in finding optimum (max. or min.) (sum-)cost assignment in a square cost matrix,
 # also if more than one configuration with same optimum sum exist.
 #
