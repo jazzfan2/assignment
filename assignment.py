@@ -16,13 +16,25 @@
 #
 # Example command to analyze first 40 rows and columns of a square random 60x60 matrix
 # to result in a maximum cost assignment, without color indication:
-# assignment.py -x <(matrix.py 60) 40 | nocolor
+# matrix.py 60 | assignment.py -x -n 40 - | nocolor
 #
 ############################################################################################
 #
 
 import sys
-import getopt
+import argparse
+
+
+# If filename is '-', input redirection is performed. Otherwise the file with given name is opened:
+def process_input(filename):
+    if filename == '-':
+        return sys.stdin
+    else:
+        try:
+            return open(filename, 'r')
+        except FileNotFoundError:
+            print(f"Error: File '{filename}' not found.")
+            sys.exit(1)
 
 
 # Print a matrix, with assigned elements (on starred zero positions) green and zeroes (elsewhere) yellow:
@@ -313,53 +325,39 @@ def step6(*args):
 x = 0                     # Meaning: default minimum (cost-)sum optimization
 undefined = -1000000      # Meaning: matrix- or list-index is yet undefined
 
-# Text printed if -h option (help) or a non-existent option has been given:
-usage = """
-Usage:
-assignment.py [-hx]  SQUARE MATRIX TEXT FILE NAME [, NUMBER OF ROWS FROM ORIGIN ]
-\t-h	Help (this output)
-\t-x	Maximum instead of minimum (cost-)sum optimization
-"""
+parser = argparse.ArgumentParser()
 
-# Select option(s):
-try:
-    options, non_option_args = getopt.getopt(sys.argv[1:], 'hx')
-except:
-    print(usage)
-    sys.exit()
+# Optional arguments:
+parser.add_argument("-n", "--number", type=int, default=0, help="Number of rows and columns")
+parser.add_argument("-x", "--maximum", help="Determine maximum instead of minimum", action='store_true')
 
-for opt, arg in options:
-    if opt in ('-h'):
-        print(usage)
-        sys.exit()
-    elif opt in ('-x'):
-        x = 1
+# Positional arguments:
+parser.add_argument("input", help="Input file or '-' for stdin")
 
-# Non-option argument(s) must be included: 
-if len(non_option_args) == 0:
-    print(usage)
-    sys.exit() 
+args = parser.parse_args()
 
-m = non_option_args[0]           # Name of matrix text-file
-# Open the matrix:
-f = open(m,'r')
+# Open the matrix text-file by name or from standard input redirection:
+with process_input(args.input) as f:
+    content = f.readlines()
+
+# Convert the matrix into a 2d-list:
 matrix = []
-for line in f.readlines():
+for line in content:
     if not line:
         break
     lis = [int(i) for i in line.split()]
     matrix.append(lis)
-f.close()
 
-n = len(matrix) 
-if len(non_option_args) > 1:
-     n = int(non_option_args[1]) # Number of rows and columns used, starting with index 0
+# Consequences of options:
+# Number of lowest rows and columns used (-n argument, or full matrix size if -n = 0 or not given):
+n      = len(matrix)        if args.number == 0      else args.number
 
-# For maximum cost assignment (x != 0) subtract all values from maximum matrix value:
-if x == 0:  # Minimum cost assigment:
-    C = [ [ element for element in row ] for row in matrix ]
-else:       # Maximum cost assigment:
+# For maximum cost assignment (option -x) subtract all values from maximum matrix value:
+if args.maximum:  # Maximum cost assigment:
     C = [ [ maxmatrix(matrix) - element for element in row ] for row in matrix ]
+else:             # Minimum cost assigment:
+    C = [ [ element for element in row ] for row in matrix ]
+
 
 # Mask matrix to indicate primed (= 2) and starred (= 1) zeros in C
 M = [ [ 0 for element in row ] for row in matrix ]
